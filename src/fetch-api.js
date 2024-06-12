@@ -1,28 +1,16 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "https://api.unsplash.com";
+axios.defaults.baseURL = axios.defaults.baseURL =
+  "https://api.themoviedb.org/3/";
 
-export const fetchImages = async (
-  query,
-  page = 1,
-  perPage = 10,
-  orderBy = "relevant",
-  color,
-  orientation
-) => {
-  const response = await axios.get("/search/photos", {
-    params: {
-      query,
-      page,
-      per_page: perPage,
-      order_by: orderBy,
-      color,
-      orientation,
-      client_id: "l-kGt3-mqxSrEvCYzUICKZOTNNe8lBSyukoITC0joU4",
-    },
-  });
-  return {
-    results: response.data.results,
-    total_pages: response.data.total_pages,
-  };
+const options = {
+  headers: {
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkNmNmNWY1MzA1NTFlOTlhMDgwNTBhNTBiYmZhOGU1YiIsInN1YiI6IjY2Njk2MDI3ZGFjYTQzZjFiNmJlYmY5MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rs75K3uexYKys-a_YhAqru99B8A0KCvGuC4bMEFjyJ4",
+  },
+};
+
+export const trendingMovie = async () => {
+  const response = await axios.get("trending/movie/day", options);
+  return response.data;
 };

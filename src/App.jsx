@@ -5,10 +5,12 @@ import MovieDetailsPage from "./pages/MovieDetailsPage/MovieDetailsPage";
 import MovieCast from "./components/MovieCast/MovieCast";
 import MovieReviews from "./components/MovieReviews/MovieReviews";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import Navigation from "./components/Navigation/Navigation";
 
 function App() {
   return (
     <div>
+      <Navigation />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/movies" element={<MoviesPage />} />
