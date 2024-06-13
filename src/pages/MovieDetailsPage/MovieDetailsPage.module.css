@@ -1,0 +1,85 @@
+.container {
+  padding: 25px;
+}
+
+.backLink {
+  display: block;
+  margin-bottom: 15px;
+  text-decoration: none;
+  color: black;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+  color: blue;
+}
+
+.backIcon {
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.topContainer {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+  position: relative;
+  margin-bottom: 25px;
+}
+.topContainer::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 100%;
+  height: 2px;
+  background-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.filmName,
+.overview,
+.genres {
+  font-weight: 550;
+}
+
+.listGenre {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+.descriptions {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  flex: 1;
+}
+
+.elem {
+  margin-right: 10px;
+  font-size: 15px;
+  background-color: #f0f0f0;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.img {
+  width: 300px;
+  height: 400px;
+  object-fit: cover;
+}
+
+.infoTitle {
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.infoLink {
+  color: blue;
+  list-style-type: disc;
+  text-decoration: underline;
+  margin-left: 30px;
+}

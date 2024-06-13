@@ -1,0 +1,11 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.item {
+  color: blue;
+  list-style-type: disc;
+  text-decoration: underline;
+}

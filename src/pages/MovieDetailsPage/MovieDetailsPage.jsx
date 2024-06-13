@@ -9,6 +9,8 @@ import { useEffect, useState } from "react";
 import { getMovieById } from "../../fetch-api";
 import Loading from "../../components/Loading/Loading";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import style from "./MovieDetailsPage.module.css";
+import { IoIosArrowBack } from "react-icons/io";
 
 const defaultsInfo = {
   poster:
@@ -43,45 +45,53 @@ const MovieDetailsPage = () => {
   }, [movieId]);
 
   return (
-    <div>
-      <div>
-        <Link to={goBack}>Go Back</Link>
-        {isLoading && <Loading />}
-        {isError && <ErrorMessage />}
-        {!isLoading && (
-          <img
-            src={
-              isError || !movie.poster_path
-                ? defaultsInfo.poster
-                : `https://image.tmdb.org/t/p/w300${movie.poster_path}`
-            }
-            alt={movie.title || defaultsInfo.title}
-          />
+    <div className={style.container}>
+      <Link className={style.backLink} to={goBack}>
+        <IoIosArrowBack className={style.backIcon} />
+        Go Back
+      </Link>
+      <div className={style.topContainer}>
+        <div>
+          {isLoading && <Loading />}
+          {isError && <ErrorMessage />}
+          {!isLoading && (
+            <img
+              className={style.img}
+              src={
+                isError || !movie.poster_path
+                  ? defaultsInfo.poster
+                  : `https://image.tmdb.org/t/p/w300${movie.poster_path}`
+              }
+              alt={movie.title || defaultsInfo.title}
+            />
+          )}
+        </div>
+
+        {!isLoading && !isError && (
+          <div className={style.descriptions}>
+            <h2 className={style.filmName}>{movie.title}</h2>
+            <p>User score: {movie.vote_average}</p>
+            <h3 className={style.overview}>Overview</h3>
+            <p>{movie.overview}</p>
+            <h4 className={style.genres}>Genres</h4>
+            <ul className={style.listGenre}>
+              {movie?.genres?.map(({ id, name }) => (
+                <li className={style.elem} key={id}>
+                  {name}
+                </li>
+              ))}
+            </ul>
+          </div>
         )}
       </div>
 
-      {!isLoading && !isError && (
-        <div>
-          <h2>{movie.title}</h2>
-          <p>User score: {movie.vote_average}</p>
-          <h3>Overview</h3>
-          <p>{movie.overview}</p>
-          <h3>Genres</h3>
-          <ul>
-            {movie?.genres?.map(({ id, name }) => (
-              <li key={id}>{name}</li>
-            ))}
-          </ul>
-        </div>
-      )}
-
       <div>
-        <h4>Additional information</h4>
+        <h4 className={style.infoTitle}>Additional information</h4>
         <ul>
-          <li>
+          <li className={style.infoLink}>
             <NavLink to="cast">Cast</NavLink>
           </li>
-          <li>
+          <li className={style.infoLink}>
             <NavLink to="reviews">Reviews</NavLink>
           </li>
         </ul>

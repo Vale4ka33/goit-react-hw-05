@@ -3,6 +3,7 @@ import { getMovieCast } from "../../fetch-api";
 import { useParams } from "react-router-dom";
 import Loading from "../Loading/Loading";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import style from "./MovieCast.module.css";
 
 const MovieCast = () => {
   const [castInfo, setCastInfo] = useState([]);
@@ -36,11 +37,12 @@ const MovieCast = () => {
       {isLoading && <Loading />}
       {isError && <ErrorMessage />}
       {!isLoading && !isError && castInfo.length > 0 ? (
-        <ul>
+        <ul className={style.container}>
           {castInfo.map((item) => (
-            <li key={item.id}>
+            <li className={style.element} key={item.id}>
               <div>
                 <img
+                  className={style.img}
                   src={
                     item.profile_path
                       ? `https://image.tmdb.org/t/p/w300${item.profile_path}`
@@ -49,8 +51,8 @@ const MovieCast = () => {
                   alt={item.name}
                 />
               </div>
-              <p>{item.name}</p>
-              <p>Character: {item.character}</p>
+              <p className={style.description}>{item.name}</p>
+              <p className={style.description}>Character: {item.character}</p>
             </li>
           ))}
         </ul>

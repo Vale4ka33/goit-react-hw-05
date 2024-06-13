@@ -3,6 +3,7 @@ import { getMovieRew } from "../../fetch-api";
 import { useParams } from "react-router-dom";
 import Loading from "../Loading/Loading";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import style from "./MovieReviews.module.css";
 
 const MovieReviews = () => {
   const [reviews, setReviews] = useState([]);
@@ -25,14 +26,14 @@ const MovieReviews = () => {
     getReviews();
   }, [movieId]);
   return (
-    <div>
+    <div className={style.container}>
       {isLoading && <Loading />}
       {isError && <ErrorMessage />}
-      <ul>
+      <ul className={style.list}>
         {reviews.map((review) => (
-          <li key={review.id}>
-            <p>Author: {review.author}</p>
-            <p>{review.content}</p>
+          <li className={style.item} key={review.id}>
+            <p className={style.name}>Author: {review.author}</p>
+            <p className={style.text}>{review.content}</p>
           </li>
         ))}
       </ul>

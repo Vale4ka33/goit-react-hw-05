@@ -5,6 +5,7 @@ import Loading from "../../components/Loading/Loading";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import SearchForm from "../../components/SearchForm/SearchForm";
 import MovieList from "../../components/MovieList/MovieList";
+import style from "./MoviesPage.module.css";
 
 const MoviesPage = () => {
   const [searchResults, setSearchResults] = useState([]);
@@ -38,7 +39,7 @@ const MoviesPage = () => {
   };
 
   return (
-    <div>
+    <div className={style.container}>
       <SearchForm onSearch={handleSearch} />
       {isLoading && <Loading />}
       {isError && <ErrorMessage />}

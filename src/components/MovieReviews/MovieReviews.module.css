@@ -1,0 +1,24 @@
+.container {
+  padding: 20px;
+}
+
+.list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.item {
+  margin-bottom: 15px;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.name {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.text {
+  margin: 0;
+}
