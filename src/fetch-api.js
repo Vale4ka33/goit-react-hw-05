@@ -14,3 +14,26 @@ export const trendingMovie = async () => {
   const response = await axios.get("trending/movie/day", options);
   return response.data;
 };
+
+export const getMovieById = async (movieId) => {
+  const response = await axios.get(`/movie/${movieId}`, options);
+  return response.data;
+};
+
+export const getMovieCast = async (movieId) => {
+  const response = await axios.get(`/movie/${movieId}/credits`, options);
+  return response.data;
+};
+
+export const getMovieRew = async (movieId) => {
+  const response = await axios.get(`/movie/${movieId}/reviews`, options);
+  return response.data;
+};
+
+export const getSomeMovies = async (searchMovies) => {
+  const response = await axios.get(
+    `search/movie?query=${searchMovies}&include_adult=false&language=en-US&page=1`,
+    options
+  );
+  return response.data;
+};
