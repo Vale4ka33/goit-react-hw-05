@@ -5,7 +5,7 @@ import {
   useLocation,
   useParams,
 } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { getMovieById } from "../../fetch-api";
 import Loading from "../../components/Loading/Loading";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
@@ -95,7 +95,9 @@ const MovieDetailsPage = () => {
             <NavLink to="reviews">Reviews</NavLink>
           </li>
         </ul>
-        <Outlet />
+        <Suspense fallback={<Loading />}>
+          <Outlet />
+        </Suspense>
       </div>
     </div>
   );
